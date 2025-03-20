@@ -124,6 +124,51 @@ foreign key(id_amostra) references Amostra(id_amostra);
 alter table Atleta 
 modify Data_nascimento date not null;
 
+-- Inserindo representantes de atletas
+INSERT INTO Rep_Atleta (nome, sobrenome) VALUES 
+('Carlos', 'Silva'),
+('Mariana', 'Souza'),
+('João', 'Pereira');
+
+-- Inserindo equipamentos
+INSERT INTO Equipamento (fabricante, modelo) VALUES 
+('Nike', 'SensorX'),
+('Adidas', 'TrackPro'),
+('Puma', 'SpeedTest');
+
+-- Inserindo autoridades
+INSERT INTO autoridade (AutoridadeDeTeste, AutoridadeDeColeta, AutoridadeDeGestao, CoordenadorDeControleDopagem) VALUES 
+('Autoridade Nacional de Teste', 'Coletora A', 'Gestor X', 'Coordenador Y'),
+('Federação Internacional de Controle', 'Coletora B', 'Gestor Y', 'Coordenador Z');
+
+ALTER TABLE Atleta MODIFY telefone VARCHAR(20) NOT NULL;
+
+-- Inserindo atletas
+INSERT INTO Atleta (nome, sobrenome, nacionalidade, telefone, Email, Data_nascimento, Documento, Sexo, id_endereço, id_Rep_Atleta) VALUES 
+('Pedro', 'Almeida', 'Brasil', 11987654321, 'pedro@email.com', '2000-05-15', '123456789', 'M', 1, 1),
+('Ana', 'Mendes', 'Portugal', 351987654321, 'ana@email.pt', '1998-08-20', '987654321', 'F', 2, 2),
+('Lucas', 'Santos', 'Espanha', 349876543210, 'lucas@email.es', '1995-02-10', '112233445', 'M', 3, 3);
+
+-- Inserindo testes
+INSERT INTO Teste (esporte, disciplina, Cordenador_Ordem_E_Teste, Status_Competiçao, id_Atleta, id_autoridade) VALUES 
+('Atletismo', '100m Rasos', 'Coordenador A', true, 1, 1),
+('Natação', '50m Livre', 'Coordenador B', false, 2, 2);
+
+-- Inserindo Teste_Autoridade
+INSERT INTO Teste_autoridade (id_autoridade, id_teste) VALUES 
+(1, 1),
+(2, 2);
+
+-- Inserindo amostras
+INSERT INTO Amostra (Numero_CodigoDaAmostra, InicialAtleta, hora_selagem, Numero_Amostra, id_equipamento) VALUES 
+(10001, 'PA', '12:30', 1, 1),
+(10002, 'AM', '14:45', 2, 2);
+
+-- Inserindo tipos de amostras
+INSERT INTO Tipo_amostra (DataeHora_Coleta, NomeDo_tipo, Volume, Densidade, id_amostra) VALUES 
+('2025-03-19 12:35', 'Sangue', 500, 1050, 1),
+('2025-03-19 14:50', 'Urina', 700, 1020, 2);
+
 
 
 
